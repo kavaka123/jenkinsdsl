@@ -1,5 +1,5 @@
 jenkins.model.Jenkins.theInstance.getProjects().each { job ->
-    if (job.name.matches('DSL-oreilly-tutorial*')) {
+    if (job.name.contains('DSL-oreilly-tutorial-*')) {
         println job.name
         job.delete()
     }
