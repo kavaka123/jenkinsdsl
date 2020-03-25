@@ -28,11 +28,11 @@ mavenJob('job-dsl-compile'){
 mavenJob('job-dsl-package'){
     customWorkspace('C:\\Program Files (x86)\\Jenkins\\workspace\\job-dsl-checkout')
     mavenInstallation('local-maven')
-    goals('package')
-//    maven {
-//      goals('compile')
-//      mavenOpts('-DproxySet=true -DproxyHost=www-proxy.us.oracle.com -DproxyPort=80')  
-//    }
+ //   goals('package')
+    maven {
+      goals('package')
+      mavenOpts('-DproxySet=true -DproxyHost=www-proxy.us.oracle.com -DproxyPort=80')  
+    }
     
   publishers {
         downstream 'job-dsl-deploy', 'SUCCESS'
