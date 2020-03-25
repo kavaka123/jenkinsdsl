@@ -13,7 +13,7 @@ job('job-dsl-checkout') {
 
 mavenJob('job-dsl-compile'){
    
-  customWorkspace('/var/lib/jenkins/workspace/job-dsl-checkout')
+  customWorkspace('C:\Program Files (x86)\Jenkins\workspace\job-dsl-checkout')
   mavenInstallation('Maven 3.3.9')
   goals('compile')
     
@@ -23,7 +23,7 @@ mavenJob('job-dsl-compile'){
 }
 
 mavenJob('job-dsl-package'){
-    customWorkspace('/var/lib/jenkins/workspace/job-dsl-checkout')
+    customWorkspace('C:\Program Files (x86)\Jenkins\workspace\job-dsl-checkout')
     mavenInstallation('Maven 3.3.9')
     goals('package')
     
