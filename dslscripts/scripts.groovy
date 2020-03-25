@@ -14,9 +14,11 @@ job('job-dsl-checkout') {
 mavenJob('job-dsl-compile'){
    
   customWorkspace('C:\\Program Files (x86)\\Jenkins\\workspace\\job-dsl-checkout')
-  mavenInstallation('Maven 3.3.9')
-  goals('compile')
-    
+  mavenInstallation('local-maven')
+  maven {
+    goals('compile')
+    mavenOpts('-DproxySet=true -DproxyHost=www-proxy.us.oracle.com -DproxyPort=80')  
+  }  
   publishers {
         downstream 'job-dsl-package', 'SUCCESS'
    }
@@ -24,8 +26,11 @@ mavenJob('job-dsl-compile'){
 
 mavenJob('job-dsl-package'){
     customWorkspace('C:\\Program Files (x86)\\Jenkins\\workspace\\job-dsl-checkout')
-    mavenInstallation('Maven 3.3.9')
-    goals('package')
+    mavenInstallation('local-maven')
+    maven {
+      goals('compile')
+      mavenOpts('-DproxySet=true -DproxyHost=www-proxy.us.oracle.com -DproxyPort=80')  
+    }
     
   publishers {
         downstream 'job-dsl-deploy', 'SUCCESS'
