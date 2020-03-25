@@ -1,7 +1,7 @@
 // purging views
 jenkins.model.Jenkins.theInstance.getViews().each {
   view ->
-  if (view.name != 'All' && view.name != 'Jenkins') {
+  if (view.name == 'test-view') {
     jenkins.model.Jenkins.theInstance.deleteView(view)
   }
 }
