@@ -42,10 +42,11 @@ mavenJob('job-dsl-package'){
 }
 
 job('job-dsl-deploy') {
-    description 'Deploy app to the demo server'
+    description 'Deploy app to docker container. view the output at curl -L http://localhost:8888/hello-world-war-1.0.0'
     
     steps{
-             shell 'sshpass -p "123456" scp /var/lib/jenkins/workspace/job-dsl-checkout/target/hello-world-war-1.0.0.war release@10.12.108.11:/opt/tomcat/webapps/'
+        batchFile('copy "C:\\Program Files (x86)\\Jenkins\\workspace\\job-dsl-checkout\\target\\hello-world-war-1.0.0.war" .')
+        batchFile('docker rm -f %JOB_NAME% && docker run -d -p 8888:8080 --name %JOB_NAME% tomcat && docker cp hello-world-war-1.0.0.war %JOB_NAME%:/usr/local/tomcat/webapps/')
       }
 }
 
