@@ -1,6 +1,6 @@
 job('ant-build') {
     scm {
-        github('tetradev01/demoapp', 'master')
+        github('kavaka123/demoapp', 'master')
     }
     
     label('master')
