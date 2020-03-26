@@ -31,6 +31,7 @@ job('ant-deploy') {
 
 deliveryPipelineView('ant job delivery pipeline') {
     showAggregatedPipeline true
+    allowPipelineStart true
     enableManualTriggers true
     pipelineInstances 3
     pipelines {
