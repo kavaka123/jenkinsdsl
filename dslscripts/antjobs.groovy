@@ -19,7 +19,7 @@ job('ant-build') {
 }
 
 job('ant-deploy') {
-    description 'Deploy app to the demo application server'
+    description 'Deploy app docker container, check the url at curl -L httpL://localhost:8888/demoapp-dev'
     /*
      * configuring ssh plugin to run docker commands
      */
