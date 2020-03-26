@@ -2,6 +2,8 @@ job('ant-build') {
     scm {
         github('tetradev01/demoapp', 'master')
     }
+    
+    label('master')
 
     steps {
         ant {
@@ -21,6 +23,7 @@ job('ant-deploy') {
     /*
      * configuring ssh plugin to run docker commands
      */
+    label('master')
     steps{
        //      shell 'sshpass -p \'123456\' scp /var/lib/jenkins/workspace/antbuild/build/demoapp-dev.war release@10.12.108.11:/opt/tomcat/webapps/'
       batchFile('copy "C:\\Program Files (x86)\\Jenkins\\workspace\\ant-build\\build\\demoapp-dev.war" .')
