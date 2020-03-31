@@ -13,7 +13,7 @@ job('nodejs-dsl-install') {
 	customWorkspace('C:\\Program Files (x86)\\Jenkins\\workspace\\nodejs-dsl-checkout')
 
 	steps{
-		shell 'npm install'
+		batchFile('npm install')
 	}
 
 	publishers{
@@ -25,9 +25,7 @@ job('nodejs-dsl-test'){
 	customWorkspace('C:\\Program Files (x86)\\Jenkins\\workspace\\nodejs-dsl-checkout')
 
 	steps{
-		shell 'npm start'
-		shell 'npm test'
-		shell 'npm stop'
+		batchFile('npm start && npm test && npm stop')
 	}
 
 	publishers{
