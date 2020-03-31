@@ -1,5 +1,5 @@
 job('nodejs-dsl-checkout') {
-    
+    label('master')
     scm {
         github('kavaka123/nodejsapp', 'master')
     }
@@ -10,6 +10,7 @@ job('nodejs-dsl-checkout') {
 }
 
 job('nodejs-dsl-install') {
+	label('master')
 	customWorkspace('C:\\Program Files (x86)\\Jenkins\\workspace\\nodejs-dsl-checkout')
 
 	steps{
@@ -22,6 +23,7 @@ job('nodejs-dsl-install') {
 }
 
 job('nodejs-dsl-test'){
+	label('master')
 	customWorkspace('C:\\Program Files (x86)\\Jenkins\\workspace\\nodejs-dsl-checkout')
 
 	steps{
@@ -35,6 +37,7 @@ job('nodejs-dsl-test'){
 
 
 job('nodejs-dsl-archive'){
+	label('master')
 	configure { project ->
         project / buildWrappers / 'org.jvnet.hudson.plugins.SSHBuildWrapper' {
             siteName 'release@localhost:2202'
@@ -50,6 +53,7 @@ job('nodejs-dsl-archive'){
 }
 
 job('nodejs-dsl-deploy'){
+	label('master')
 	configure { project ->
         project / buildWrappers / 'org.jvnet.hudson.plugins.SSHBuildWrapper' {
             siteName 'release@localhost:2202'
