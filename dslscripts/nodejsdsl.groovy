@@ -1,7 +1,7 @@
 job('nodejs-dsl-checkout') {
     
     scm {
-        github('tetradev01/nodejsapp', 'master')
+        github('kavaka123/nodejsapp', 'master')
     }
   
    publishers {
@@ -10,7 +10,7 @@ job('nodejs-dsl-checkout') {
 }
 
 job('nodejs-dsl-install') {
-	customWorkspace('/var/lib/jenkins/workspace/nodejs-dsl-checkout')
+	customWorkspace('C:\\Program Files (x86)\\Jenkins\\workspace\\nodejs-dsl-checkout')
 
 	steps{
 		shell 'npm install'
@@ -22,7 +22,7 @@ job('nodejs-dsl-install') {
 }
 
 job('nodejs-dsl-test'){
-	customWorkspace('/var/lib/jenkins/workspace/nodejs-dsl-checkout')
+	customWorkspace('C:\\Program Files (x86)\\Jenkins\\workspace\\nodejs-dsl-checkout')
 
 	steps{
 		shell 'npm start'
@@ -39,7 +39,7 @@ job('nodejs-dsl-test'){
 job('nodejs-dsl-archive'){
 	configure { project ->
         project / buildWrappers / 'org.jvnet.hudson.plugins.SSHBuildWrapper' {
-            siteName 'release@10.12.108.11:22'
+            siteName 'release@localhost:2202'
             postScript """        
             	tar -zcvf /var/archive/app.tar.gz /var/myapp/           
 	      """
@@ -54,7 +54,7 @@ job('nodejs-dsl-archive'){
 job('nodejs-dsl-deploy'){
 	configure { project ->
         project / buildWrappers / 'org.jvnet.hudson.plugins.SSHBuildWrapper' {
-            siteName 'release@10.12.108.11:22'
+            siteName 'release@localhost:2202'
             postScript """        
             	cd /var/myapp
             	git pull origin master
