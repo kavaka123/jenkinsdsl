@@ -62,3 +62,14 @@ job('nodejs-dsl-deploy'){
             }
 	}
     }
+
+
+deliveryPipelineView('nodejs app delivery pipeline') {
+    showAggregatedPipeline true
+    allowPipelineStart true
+    enableManualTriggers true
+    pipelineInstances 3
+    pipelines {
+        component('nodejs app delivery pipeline', 'nodejs-dsl-checkout')
+    }
+}
